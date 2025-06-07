@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TBitacoraAcciones
+public partial class EBitacoraAcciones
 {
     public int CnIdBitacora { get; set; }
 
@@ -24,11 +24,11 @@ public partial class TBitacoraAcciones
     /// </summary>
     public int? CnDocumento { get; set; }
 
-    public virtual TAcciones CnIdAccionNavigation { get; set; } = null!;
+    public virtual EAcciones CnIdAccionNavigation { get; set; } = null!;
 
-    public virtual TPantallas CnIdPantallaNavigation { get; set; } = null!;
+    public virtual EPantallas CnIdPantallaNavigation { get; set; } = null!;
 
-    public virtual TTiposDocumentos CnIdTipoDocumentoNavigation { get; set; } = null!;
+    public virtual ETiposDocumentos CnIdTipoDocumentoNavigation { get; set; } = null!;
 
-    public virtual TUsuarios CnIdUsuarioNavigation { get; set; } = null!;
+    public virtual EUsuarios CnIdUsuarioNavigation { get; set; } = null!;
 }

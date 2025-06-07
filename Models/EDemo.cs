@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TDemo
+public partial class EDemo
 {
     public int TnCodigo { get; set; }
 

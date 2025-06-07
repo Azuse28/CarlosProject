@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TAdjuntos
+public partial class EAdjuntos
 {
     public int CnIdAdjuntos { get; set; }
 
@@ -15,9 +15,9 @@ public partial class TAdjuntos
 
     public DateTime CfFechaRegistro { get; set; }
 
-    public virtual TTareas CnDocumento1 { get; set; } = null!;
+    public virtual ETareas CnDocumento1 { get; set; } = null!;
 
-    public virtual TPermisos CnDocumentoNavigation { get; set; } = null!;
+    public virtual EPermisos CnDocumentoNavigation { get; set; } = null!;
 
-    public virtual TUsuarios CnUsuarioAccionNavigation { get; set; } = null!;
+    public virtual EUsuarios CnUsuarioAccionNavigation { get; set; } = null!;
 }

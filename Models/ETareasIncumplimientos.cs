@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TTareasIncumplimientos
+public partial class ETareasIncumplimientos
 {
     public int CnIdTareaIncumplimiento { get; set; }
 
@@ -13,5 +13,5 @@ public partial class TTareasIncumplimientos
 
     public DateTime CfFechaIncumplimiento { get; set; }
 
-    public virtual TTareas CnIdTareaNavigation { get; set; } = null!;
+    public virtual ETareas CnIdTareaNavigation { get; set; } = null!;
 }

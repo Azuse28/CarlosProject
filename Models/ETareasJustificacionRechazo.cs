@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TTareasJustificacionRechazo
+public partial class ETareasJustificacionRechazo
 {
     public int CnIdTarea { get; set; }
 
@@ -13,5 +13,5 @@ public partial class TTareasJustificacionRechazo
 
     public int CnIdTareaRechazo { get; set; }
 
-    public virtual TTareas CnIdTareaNavigation { get; set; } = null!;
+    public virtual ETareas CnIdTareaNavigation { get; set; } = null!;
 }

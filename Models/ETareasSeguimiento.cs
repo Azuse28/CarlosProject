@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TTareasSeguimiento
+public partial class ETareasSeguimiento
 {
     public int CnIdSeguimiento { get; set; }
 
@@ -13,5 +13,5 @@ public partial class TTareasSeguimiento
 
     public DateTime CfFechaSeguimiento { get; set; }
 
-    public virtual TTareas CnIdTareaNavigation { get; set; } = null!;
+    public virtual ETareas CnIdTareaNavigation { get; set; } = null!;
 }

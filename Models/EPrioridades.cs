@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TPrioridades
+public partial class EPrioridades
 {
     public byte CnIdPrioridad { get; set; }
 
@@ -11,5 +11,5 @@ public partial class TPrioridades
 
     public string CtDescripcionPrioridad { get; set; } = null!;
 
-    public virtual ICollection<TTareas> TTareas { get; set; } = new List<TTareas>();
+    public virtual ICollection<ETareas> ETareas { get; set; } = new List<ETareas>();
 }

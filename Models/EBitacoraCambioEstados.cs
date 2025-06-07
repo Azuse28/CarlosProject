@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TBitacoraCambioEstados
+public partial class EBitacoraCambioEstados
 {
     public int CnIdCambioEstado { get; set; }
 
@@ -21,9 +21,9 @@ public partial class TBitacoraCambioEstados
 
     public string? CtObservaciones { get; set; }
 
-    public virtual TEstados CnIdEstadoAnteriorNavigation { get; set; } = null!;
+    public virtual EEstados CnIdEstadoAnteriorNavigation { get; set; } = null!;
 
-    public virtual TEstados CnIdEstadoNuevoNavigation { get; set; } = null!;
+    public virtual EEstados CnIdEstadoNuevoNavigation { get; set; } = null!;
 
-    public virtual TUsuarios CnIdUsuarioResponsableNavigation { get; set; } = null!;
+    public virtual EUsuarios CnIdUsuarioResponsableNavigation { get; set; } = null!;
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TFrecuenciaRecordatorio
+public partial class EFrecuenciaRecordatorio
 {
     public int CnIdRecordatorio { get; set; }
 
@@ -23,7 +23,7 @@ public partial class TFrecuenciaRecordatorio
 
     public bool CbEstado { get; set; }
 
-    public virtual TUsuarios CnIdUsuarioCreadorNavigation { get; set; } = null!;
+    public virtual EUsuarios CnIdUsuarioCreadorNavigation { get; set; } = null!;
 
-    public virtual ICollection<TNotificaciones> TNotificaciones { get; set; } = new List<TNotificaciones>();
+    public virtual ICollection<ENotificaciones> ENotificaciones { get; set; } = new List<ENotificaciones>();
 }

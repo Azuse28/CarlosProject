@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TDiasNoHabiles
+public partial class EDiasNoHabiles
 {
     public int CnIdDiasNoHabiles { get; set; }
 

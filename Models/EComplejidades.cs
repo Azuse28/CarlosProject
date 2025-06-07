@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TComplejidades
+public partial class EComplejidades
 {
     public byte CnIdComplejidad { get; set; }
 
     public string CtNombre { get; set; } = null!;
 
-    public virtual ICollection<TTareas> TTareas { get; set; } = new List<TTareas>();
+    public virtual ICollection<ETareas> ETareas { get; set; } = new List<ETareas>();
 }

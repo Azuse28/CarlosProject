@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TiNotificacionesXUsuarios
+public partial class EiNotificacionesXUsuarios
 {
     public int CnIdNotificacion { get; set; }
 
@@ -11,7 +11,7 @@ public partial class TiNotificacionesXUsuarios
 
     public string CtCorreoDestino { get; set; } = null!;
 
-    public virtual TNotificaciones CnIdNotificacionNavigation { get; set; } = null!;
+    public virtual ENotificaciones CnIdNotificacionNavigation { get; set; } = null!;
 
-    public virtual TUsuarios CnIdUsuarioNavigation { get; set; } = null!;
+    public virtual EUsuarios CnIdUsuarioNavigation { get; set; } = null!;
 }

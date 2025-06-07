@@ -15,51 +15,51 @@ public partial class IntelTaskUcrContext : DbContext
     {
     }
 
-    public virtual DbSet<TAcciones> TAcciones { get; set; }
+    public virtual DbSet<EAcciones> EAcciones { get; set; }
 
-    public virtual DbSet<TAdjuntos> TAdjuntos { get; set; }
+    public virtual DbSet<EAdjuntos> EAdjuntos { get; set; }
 
-    public virtual DbSet<TBitacoraAcciones> TBitacoraAcciones { get; set; }
+    public virtual DbSet<EBitacoraAcciones> EBitacoraAcciones { get; set; }
 
-    public virtual DbSet<TBitacoraCambioEstados> TBitacoraCambiosEstados { get; set; }
+    public virtual DbSet<EBitacoraCambioEstados> EBitacoraCambiosEstados { get; set; }
 
-    public virtual DbSet<TComplejidades> TComplejidades { get; set; }
+    public virtual DbSet<EComplejidades> EComplejidades { get; set; }
 
-    public virtual DbSet<TDemo> TDemos { get; set; }
+    public virtual DbSet<EDemo> EDemos { get; set; }
 
-    public virtual DbSet<TDiasNoHabiles> TDiasNoHabiles { get; set; }
+    public virtual DbSet<EDiasNoHabiles> EDiasNoHabiles { get; set; }
 
-    public virtual DbSet<TEstados> TEstados { get; set; }
+    public virtual DbSet<EEstados> EEstados { get; set; }
 
-    public virtual DbSet<TFrecuenciaRecordatorio> TFrecuenciaRecordatorios { get; set; }
+    public virtual DbSet<EFrecuenciaRecordatorio> EFrecuenciaRecordatorios { get; set; }
 
-    public virtual DbSet<TNotificaciones> TNotificaciones { get; set; }
+    public virtual DbSet<ENotificaciones> ENotificaciones { get; set; }
 
-    public virtual DbSet<TOficinas> TOficinas { get; set; }
+    public virtual DbSet<EOficinas> EOficinas { get; set; }
 
-    public virtual DbSet<TPantallas> TPantallas { get; set; }
+    public virtual DbSet<EPantallas> EPantallas { get; set; }
 
-    public virtual DbSet<TPermisos> TPermisos { get; set; }
+    public virtual DbSet<EPermisos> EPermisos { get; set; }
 
-    public virtual DbSet<TPrioridades> TPrioridades { get; set; }
+    public virtual DbSet<EPrioridades> EPrioridades { get; set; }
 
-    public virtual DbSet<TRoles> TRoles { get; set; }
+    public virtual DbSet<ERoles> ERoles { get; set; }
 
-    public virtual DbSet<TTareas> TTareas { get; set; }
+    public virtual DbSet<ETareas> ETareas { get; set; }
 
-    public virtual DbSet<TTareasIncumplimientos> TTareasIncumplimientos { get; set; }
+    public virtual DbSet<ETareasIncumplimientos> ETareasIncumplimientos { get; set; }
 
-    public virtual DbSet<TTareasJustificacionRechazo> TTareasJustificacionRechazos { get; set; }
+    public virtual DbSet<ETareasJustificacionRechazo> ETareasJustificacionRechazos { get; set; }
 
-    public virtual DbSet<TTareasSeguimiento> TTareasSeguimientos { get; set; }
+    public virtual DbSet<ETareasSeguimiento> ETareasSeguimientos { get; set; }
 
-    public virtual DbSet<TTiposDocumentos> TTiposDocumentos { get; set; }
+    public virtual DbSet<ETiposDocumentos> ETiposDocumentos { get; set; }
 
-    public virtual DbSet<TUsuarios> TUsuarios { get; set; }
+    public virtual DbSet<EUsuarios> EUsuarios { get; set; }
 
-    public virtual DbSet<TiNotificacionesXUsuarios> TiNotificacionesXUsuarios { get; set; }
+    public virtual DbSet<EiNotificacionesXUsuarios> EiNotificacionesXUsuarios { get; set; }
 
-    public virtual DbSet<TiRolXPantallaXAccion> TiRolXPantallaXAccions { get; set; }
+    public virtual DbSet<EiRolXPantallaXAccion> EiRolXPantallaXAccions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -69,7 +69,7 @@ public partial class IntelTaskUcrContext : DbContext
     {
         modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
 
-        modelBuilder.Entity<TAcciones>(entity =>
+        modelBuilder.Entity<EAcciones>(entity =>
         {
             entity.HasKey(e => e.CnIdAccion).HasName("PK__T_Accion__7A7E29FC3E7E9B7D");
 
@@ -82,7 +82,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnName("CT_Descripcion_accion");
         });
 
-        modelBuilder.Entity<TAdjuntos>(entity =>
+        modelBuilder.Entity<EAdjuntos>(entity =>
         {
             entity.HasKey(e => new { e.CnIdAdjuntos, e.CnDocumento }).HasName("PK__T_Adjunt__F001B021DBC172C2");
 
@@ -101,23 +101,23 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_Archivo_ruta");
 
-            entity.HasOne(d => d.CnDocumentoNavigation).WithMany(p => p.TAdjuntos)
+            entity.HasOne(d => d.CnDocumentoNavigation).WithMany(p => p.EAdjuntos)
                 .HasForeignKey(d => d.CnDocumento)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Adjuntos_T_Permisos");
 
-            entity.HasOne(d => d.CnDocumento1).WithMany(p => p.TAdjuntos)
+            entity.HasOne(d => d.CnDocumento1).WithMany(p => p.EAdjuntos)
                 .HasForeignKey(d => d.CnDocumento)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Adjuntos_T_Tareas");
 
-            entity.HasOne(d => d.CnUsuarioAccionNavigation).WithMany(p => p.TAdjuntos)
+            entity.HasOne(d => d.CnUsuarioAccionNavigation).WithMany(p => p.EAdjuntos)
                 .HasForeignKey(d => d.CnUsuarioAccion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Adjuntos_T_Usuarios");
         });
 
-        modelBuilder.Entity<TBitacoraAcciones>(entity =>
+        modelBuilder.Entity<EBitacoraAcciones>(entity =>
         {
             entity.HasKey(e => e.CnIdBitacora).HasName("PK_CN_Id_bitacora");
 
@@ -138,28 +138,28 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_informacion_importante");
 
-            entity.HasOne(d => d.CnIdAccionNavigation).WithMany(p => p.TBitacoraAcciones)
+            entity.HasOne(d => d.CnIdAccionNavigation).WithMany(p => p.EBitacoraAcciones)
                 .HasForeignKey(d => d.CnIdAccion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Bitacora_Acciones_T_Acciones");
 
-            entity.HasOne(d => d.CnIdPantallaNavigation).WithMany(p => p.TBitacoraAcciones)
+            entity.HasOne(d => d.CnIdPantallaNavigation).WithMany(p => p.EBitacoraAcciones)
                 .HasForeignKey(d => d.CnIdPantalla)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Bitacora_Acciones_T_Pantallas");
 
-            entity.HasOne(d => d.CnIdTipoDocumentoNavigation).WithMany(p => p.TBitacoraAcciones)
+            entity.HasOne(d => d.CnIdTipoDocumentoNavigation).WithMany(p => p.EBitacoraAcciones)
                 .HasForeignKey(d => d.CnIdTipoDocumento)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Bitacora_Acciones_T_Tipos_documentos");
 
-            entity.HasOne(d => d.CnIdUsuarioNavigation).WithMany(p => p.TBitacoraAcciones)
+            entity.HasOne(d => d.CnIdUsuarioNavigation).WithMany(p => p.EBitacoraAcciones)
                 .HasForeignKey(d => d.CnIdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Bitacora_Acciones_T_Usuarios");
         });
 
-        modelBuilder.Entity<TBitacoraCambioEstados>(entity =>
+        modelBuilder.Entity<EBitacoraCambioEstados>(entity =>
         {
             entity.HasKey(e => e.CnIdCambioEstado).HasName("PK__T_Bitaco__B906A6F3523AB22C");
 
@@ -182,23 +182,23 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_Tipo_entidad");
 
-            entity.HasOne(d => d.CnIdEstadoAnteriorNavigation).WithMany(p => p.TBitacoraCambiosEstadoCnIdEstadoAnteriorNavigations)
+            entity.HasOne(d => d.CnIdEstadoAnteriorNavigation).WithMany(p => p.EBitacoraCambiosEstadoCnIdEstadoAnteriorNavigations)
                 .HasForeignKey(d => d.CnIdEstadoAnterior)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Bitacora_Cambios_Estados_T_Estados");
 
-            entity.HasOne(d => d.CnIdEstadoNuevoNavigation).WithMany(p => p.TBitacoraCambiosEstadoCnIdEstadoNuevoNavigations)
+            entity.HasOne(d => d.CnIdEstadoNuevoNavigation).WithMany(p => p.EBitacoraCambiosEstadoCnIdEstadoNuevoNavigations)
                 .HasForeignKey(d => d.CnIdEstadoNuevo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Bitacora_Cambios_Estados_T_Estados1");
 
-            entity.HasOne(d => d.CnIdUsuarioResponsableNavigation).WithMany(p => p.TBitacoraCambiosEstados)
+            entity.HasOne(d => d.CnIdUsuarioResponsableNavigation).WithMany(p => p.EBitacoraCambiosEstados)
                 .HasForeignKey(d => d.CnIdUsuarioResponsable)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Bitacora_Cambios_Estados_T_Usuarios");
         });
 
-        modelBuilder.Entity<TComplejidades>(entity =>
+        modelBuilder.Entity<EComplejidades>(entity =>
         {
             entity.HasKey(e => e.CnIdComplejidad).HasName("PK__T_Comple__E1A713D709E9B2FF");
 
@@ -215,7 +215,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnName("CT_Nombre");
         });
 
-        modelBuilder.Entity<TDemo>(entity =>
+        modelBuilder.Entity<EDemo>(entity =>
         {
             entity.HasKey(e => e.TnCodigo);
 
@@ -230,7 +230,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnName("TC_Descripcion");
         });
 
-        modelBuilder.Entity<TDiasNoHabiles>(entity =>
+        modelBuilder.Entity<EDiasNoHabiles>(entity =>
         {
             entity.HasKey(e => e.CnIdDiasNoHabiles).HasName("PK__T_Dias_N__3A5B533F97042764");
 
@@ -246,7 +246,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnName("CT_Descripcion");
         });
 
-        modelBuilder.Entity<TEstados>(entity =>
+        modelBuilder.Entity<EEstados>(entity =>
         {
             entity.HasKey(e => e.CnIdEstado).HasName("PK__T_Estado__510F27FC773A78A2");
 
@@ -263,7 +263,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnName("CT_Estado");
         });
 
-        modelBuilder.Entity<TFrecuenciaRecordatorio>(entity =>
+        modelBuilder.Entity<EFrecuenciaRecordatorio>(entity =>
         {
             entity.HasKey(e => e.CnIdRecordatorio).HasName("PK__T_Frecue__3167F975AD1C5162");
 
@@ -290,13 +290,13 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_Texto_recordatorio");
 
-            entity.HasOne(d => d.CnIdUsuarioCreadorNavigation).WithMany(p => p.TFrecuenciaRecordatorios)
+            entity.HasOne(d => d.CnIdUsuarioCreadorNavigation).WithMany(p => p.EFrecuenciaRecordatorios)
                 .HasForeignKey(d => d.CnIdUsuarioCreador)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Frecuencia_Recordatorio_T_Usuarios");
         });
 
-        modelBuilder.Entity<TNotificaciones>(entity =>
+        modelBuilder.Entity<ENotificaciones>(entity =>
         {
             entity.HasKey(e => e.CnIdNotificacion).HasName("PK__T_Notifi__530F20BA03C959BC");
 
@@ -325,12 +325,12 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_Titulo_notificacion");
 
-            entity.HasOne(d => d.CnIdRecordatorioNavigation).WithMany(p => p.TNotificaciones)
+            entity.HasOne(d => d.CnIdRecordatorioNavigation).WithMany(p => p.ENotificaciones)
                 .HasForeignKey(d => d.CnIdRecordatorio)
                 .HasConstraintName("FK_T_Notificaciones_T_Frecuencia_Recordatorio");
         });
 
-        modelBuilder.Entity<TOficinas>(entity =>
+        modelBuilder.Entity<EOficinas>(entity =>
         {
             entity.HasKey(e => e.CnCodigoOficina).HasName("PK__T_Oficin__8C4BCAE7A02072BE");
 
@@ -346,7 +346,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnName("CT_Nombre_oficina");
         });
 
-        modelBuilder.Entity<TPantallas>(entity =>
+        modelBuilder.Entity<EPantallas>(entity =>
         {
             entity.HasKey(e => e.CnIdPantalla).HasName("PK__T_Pantal__D15F0749D7C25D17");
 
@@ -358,7 +358,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnName("CT_Descripcion");
         });
 
-        modelBuilder.Entity<TPermisos>(entity =>
+        modelBuilder.Entity<EPermisos>(entity =>
         {
             entity.HasKey(e => e.CnIdPermiso).HasName("PK__T_Permis__8E2BCD0F78973544");
 
@@ -388,18 +388,18 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnType("text")
                 .HasColumnName("CT_Titulo_permiso");
 
-            entity.HasOne(d => d.CnIdEstadoNavigation).WithMany(p => p.TPermisos)
+            entity.HasOne(d => d.CnIdEstadoNavigation).WithMany(p => p.EPermisos)
                 .HasForeignKey(d => d.CnIdEstado)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__T_Permiso__CN_Es__151B244E");
 
-            entity.HasOne(d => d.CnUsuarioCreadorNavigation).WithMany(p => p.TPermisos)
+            entity.HasOne(d => d.CnUsuarioCreadorNavigation).WithMany(p => p.EPermisos)
                 .HasForeignKey(d => d.CnUsuarioCreador)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Permisos_T_Usuarios");
         });
 
-        modelBuilder.Entity<TPrioridades>(entity =>
+        modelBuilder.Entity<EPrioridades>(entity =>
         {
             entity.HasKey(e => e.CnIdPrioridad).HasName("PK__T_priori__2ABD997461BA968F");
 
@@ -416,7 +416,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnName("CT_Nombre_prioridad");
         });
 
-        modelBuilder.Entity<TRoles>(entity =>
+        modelBuilder.Entity<ERoles>(entity =>
         {
             entity.HasKey(e => e.CnIdRol).HasName("PK__T_Roles__2F1CAF9CE13A0206");
 
@@ -432,7 +432,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnName("CT_Nombre_rol");
         });
 
-        modelBuilder.Entity<TTareas>(entity =>
+        modelBuilder.Entity<ETareas>(entity =>
         {
             entity.HasKey(e => e.CnIdTarea).HasName("PK__T_Tareas__4CCBC4E78E462607");
 
@@ -471,17 +471,17 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_Titulo_tarea");
 
-            entity.HasOne(d => d.CnIdComplejidadNavigation).WithMany(p => p.TTareas)
+            entity.HasOne(d => d.CnIdComplejidadNavigation).WithMany(p => p.ETareas)
                 .HasForeignKey(d => d.CnIdComplejidad)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Tareas_T_Complejidades");
 
-            entity.HasOne(d => d.CnIdEstadoNavigation).WithMany(p => p.TTareas)
+            entity.HasOne(d => d.CnIdEstadoNavigation).WithMany(p => p.ETareas)
                 .HasForeignKey(d => d.CnIdEstado)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Tareas_T_Estados");
 
-            entity.HasOne(d => d.CnIdPrioridadNavigation).WithMany(p => p.TTareas)
+            entity.HasOne(d => d.CnIdPrioridadNavigation).WithMany(p => p.ETareas)
                 .HasForeignKey(d => d.CnIdPrioridad)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Tareas_T_Prioridades");
@@ -490,17 +490,17 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasForeignKey(d => d.CnTareaOrigen)
                 .HasConstraintName("FK_Tarea_TareaOrigen");
 
-            entity.HasOne(d => d.CnUsuarioAsignadoNavigation).WithMany(p => p.TTareaCnUsuarioAsignadoNavigations)
+            entity.HasOne(d => d.CnUsuarioAsignadoNavigation).WithMany(p => p.ETareaCnUsuarioAsignadoNavigations)
                 .HasForeignKey(d => d.CnUsuarioAsignado)
                 .HasConstraintName("FK_T_Tareas_T_Usuarios1");
 
-            entity.HasOne(d => d.CnUsuarioCreadorNavigation).WithMany(p => p.TTareaCnUsuarioCreadorNavigations)
+            entity.HasOne(d => d.CnUsuarioCreadorNavigation).WithMany(p => p.ETareaCnUsuarioCreadorNavigations)
                 .HasForeignKey(d => d.CnUsuarioCreador)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Tareas_T_Usuarios");
         });
 
-        modelBuilder.Entity<TTareasIncumplimientos>(entity =>
+        modelBuilder.Entity<ETareasIncumplimientos>(entity =>
         {
             entity.HasKey(e => e.CnIdTareaIncumplimiento);
 
@@ -517,13 +517,13 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_Justificacion_incumplimiento");
 
-            entity.HasOne(d => d.CnIdTareaNavigation).WithMany(p => p.TTareasIncumplimientos)
+            entity.HasOne(d => d.CnIdTareaNavigation).WithMany(p => p.ETareasIncumplimientos)
                 .HasForeignKey(d => d.CnIdTarea)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Tareas_Incumplimientos_T_Tareas");
         });
 
-        modelBuilder.Entity<TTareasJustificacionRechazo>(entity =>
+        modelBuilder.Entity<ETareasJustificacionRechazo>(entity =>
         {
             entity.HasKey(e => e.CnIdTareaRechazo).HasName("PK__T_Tareas__4CCBC4E74B715DA3");
 
@@ -541,13 +541,13 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_Descripcion_rechazo");
 
-            entity.HasOne(d => d.CnIdTareaNavigation).WithMany(p => p.TTareasJustificacionRechazos)
+            entity.HasOne(d => d.CnIdTareaNavigation).WithMany(p => p.ETareasJustificacionRechazos)
                 .HasForeignKey(d => d.CnIdTarea)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Tareas_Justificacion_Rechazo_T_Tareas");
         });
 
-        modelBuilder.Entity<TTareasSeguimiento>(entity =>
+        modelBuilder.Entity<ETareasSeguimiento>(entity =>
         {
             entity.HasKey(e => e.CnIdSeguimiento).HasName("PK__T_Tareas__E99107436F445187");
 
@@ -562,13 +562,13 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_Comentario");
 
-            entity.HasOne(d => d.CnIdTareaNavigation).WithMany(p => p.TTareasSeguimientos)
+            entity.HasOne(d => d.CnIdTareaNavigation).WithMany(p => p.ETareasSeguimientos)
                 .HasForeignKey(d => d.CnIdTarea)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Tareas_Seguimiento_Tareas");
         });
 
-        modelBuilder.Entity<TTiposDocumentos>(entity =>
+        modelBuilder.Entity<ETiposDocumentos>(entity =>
         {
             entity.HasKey(e => e.CnIdTipoDocumento).HasName("PK__T_Tipos___7D06A37593D62D57");
 
@@ -583,7 +583,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .HasColumnName("CT_Nombre_tipo_documento");
         });
 
-        modelBuilder.Entity<TUsuarios>(entity =>
+        modelBuilder.Entity<EUsuarios>(entity =>
         {
             entity.HasKey(e => e.CnIdUsuario).HasName("PK__T_Usuari__043A50354BA4D783");
 
@@ -610,7 +610,7 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_Nombre_usuario");
 
-            entity.HasOne(d => d.CnIdRolNavigation).WithMany(p => p.TUsuarios)
+            entity.HasOne(d => d.CnIdRolNavigation).WithMany(p => p.EUsuarios)
                 .HasForeignKey(d => d.CnIdRol)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Usuarios_T_Roles");
@@ -618,11 +618,11 @@ public partial class IntelTaskUcrContext : DbContext
             entity.HasMany(d => d.CnCodigoOficinas).WithMany(p => p.CnIdUsuarios)
                 .UsingEntity<Dictionary<string, object>>(
                     "TiUsuarioXOficina",
-                    r => r.HasOne<TOficinas>().WithMany()
+                    r => r.HasOne<EOficinas>().WithMany()
                         .HasForeignKey("CnCodigoOficina")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK__TI_Usuari__CN_Co__02FC7413"),
-                    l => l.HasOne<TUsuarios>().WithMany()
+                    l => l.HasOne<EUsuarios>().WithMany()
                         .HasForeignKey("CnIdUsuario")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK_Usuario_Oficina"),
@@ -635,7 +635,7 @@ public partial class IntelTaskUcrContext : DbContext
                     });
         });
 
-        modelBuilder.Entity<TiNotificacionesXUsuarios>(entity =>
+        modelBuilder.Entity<EiNotificacionesXUsuarios>(entity =>
         {
             entity.HasKey(e => new { e.CnIdNotificacion, e.CnIdUsuario }).HasName("PK__T_Notifi__6A0E6D680FB34932");
 
@@ -648,18 +648,18 @@ public partial class IntelTaskUcrContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("CT_Correo_destino");
 
-            entity.HasOne(d => d.CnIdNotificacionNavigation).WithMany(p => p.TiNotificacionesXUsuarios)
+            entity.HasOne(d => d.CnIdNotificacionNavigation).WithMany(p => p.EiNotificacionesXUsuarios)
                 .HasForeignKey(d => d.CnIdNotificacion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__T_Notific__CN_Id__10566F31");
 
-            entity.HasOne(d => d.CnIdUsuarioNavigation).WithMany(p => p.TiNotificacionesXUsuarios)
+            entity.HasOne(d => d.CnIdUsuarioNavigation).WithMany(p => p.EiNotificacionesXUsuarios)
                 .HasForeignKey(d => d.CnIdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_T_Notificaciones_X_Usuarios_T_Usuarios");
         });
 
-        modelBuilder.Entity<TiRolXPantallaXAccion>(entity =>
+        modelBuilder.Entity<EiRolXPantallaXAccion>(entity =>
         {
             entity.HasKey(e => new { e.CnIdPantalla, e.CnIdAccion, e.CnIdRol });
 
@@ -671,17 +671,17 @@ public partial class IntelTaskUcrContext : DbContext
             entity.Property(e => e.CnIdAccion).HasColumnName("CN_Id_accion");
             entity.Property(e => e.CnIdRol).HasColumnName("CN_Id_rol");
 
-            entity.HasOne(d => d.CnIdAccionNavigation).WithMany(p => p.TiRolXPantallaXAccions)
+            entity.HasOne(d => d.CnIdAccionNavigation).WithMany(p => p.EiRolXPantallaXAccions)
                 .HasForeignKey(d => d.CnIdAccion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TI_Rol_X_Pantalla_X_Accion_T_Acciones");
 
-            entity.HasOne(d => d.CnIdPantallaNavigation).WithMany(p => p.TiRolXPantallaXAccions)
+            entity.HasOne(d => d.CnIdPantallaNavigation).WithMany(p => p.EiRolXPantallaXAccions)
                 .HasForeignKey(d => d.CnIdPantalla)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TI_Rol_X_Pantalla_X_Accion_T_Pantallas");
 
-            entity.HasOne(d => d.CnIdRolNavigation).WithMany(p => p.TiRolXPantallaXAccions)
+            entity.HasOne(d => d.CnIdRolNavigation).WithMany(p => p.EiRolXPantallaXAccions)
                 .HasForeignKey(d => d.CnIdRol)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_TI_Rol_X_Pantalla_X_Accion_T_Roles");

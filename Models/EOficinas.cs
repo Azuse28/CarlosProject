@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TOficinas
+public partial class EOficinas
 {
     public int CnCodigoOficina { get; set; }
 
@@ -11,5 +11,5 @@ public partial class TOficinas
 
     public int? CnOficinaEncargada { get; set; }
 
-    public virtual ICollection<TUsuarios> CnIdUsuarios { get; set; } = new List<TUsuarios>();
+    public virtual ICollection<EUsuarios> CnIdUsuarios { get; set; } = new List<EUsuarios>();
 }

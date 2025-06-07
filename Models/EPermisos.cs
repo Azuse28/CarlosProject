@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IntelTaskUCR.Domain.Models;
 
-public partial class TPermisos
+public partial class EPermisos
 {
     public int CnIdPermiso { get; set; }
 
@@ -23,9 +23,9 @@ public partial class TPermisos
 
     public int CnUsuarioCreador { get; set; }
 
-    public virtual TEstados CnIdEstadoNavigation { get; set; } = null!;
+    public virtual EEstados CnIdEstadoNavigation { get; set; } = null!;
 
-    public virtual TUsuarios CnUsuarioCreadorNavigation { get; set; } = null!;
+    public virtual EUsuarios CnUsuarioCreadorNavigation { get; set; } = null!;
 
-    public virtual ICollection<TAdjuntos> TAdjuntos { get; set; } = new List<TAdjuntos>();
+    public virtual ICollection<EAdjuntos> EAdjuntos { get; set; } = new List<EAdjuntos>();
 }
